@@ -1,0 +1,33 @@
+{% extends 'layout/base.html' %}
+
+{% block title %}Trang chủ{% endblock %}
+
+{% block content %}
+
+<h1 class="tieudelog">LỊCH SỬ ĐẶT HÀNG</h1>
+
+<div class="lsthanhtoan">
+    <table class="tableStyle">
+    <tr>
+        <th>TÊN</th>
+        <th>EMAIL</th>
+        <th>SỐ ĐIỆN THOẠI</th>
+        <th>SỐ LƯỢNG NGƯỜI LỚN</th>
+        <th>SỐ LƯỢNG TRẺ EM</th>
+        <th>TỔNG TIỀN</th>
+    </tr>
+    {% for p in bills %}
+    <tr>
+        <td>{{p.name}}</td>
+        <td>{{p.email}}</td>
+        <td>+84 {{p.phone}}</td>
+        <td>{{p.amount_big}}</td>
+        <td>{{p.amount_young}}</td>
+        <td>{{p.total}}$</td>
+    </tr>
+    {% endfor %}
+</table>
+</div>
+
+
+{% endblock %}

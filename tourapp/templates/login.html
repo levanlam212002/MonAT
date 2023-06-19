@@ -1,0 +1,34 @@
+{% extends 'layout/base.html' %}
+
+{% block title %}Trang chủ{% endblock %}
+
+{% block content %}
+
+<h1 class="tieudelog">ĐĂNG NHẬP</h1>
+
+{% if err_msg %}
+<div class="thongbaoerr">
+    <h3>{{ err_msg }}</h3>
+</div>
+{% endif %}
+
+<form method="post" action="{{ url_for('user_signin') }}">
+
+    <div class="form-group">
+        <label for="name">Tên đăng nhập:</label>
+        <input type="text" class="form-control" id="username" name="username" required/>
+    </div>
+
+    <div class="form-group">
+        <label for="pass">Mật khẩu:</label>
+        <input type="password" class="form-control" id="pass" name="password" required/>
+    </div>
+    <div class="quenmatkhau">
+        <a href="{{ url_for('forget_password') }}">Quên mật khẩu?</a>
+    </div>
+    <div class="form-group1">
+        <button type="submit" class="btn btn-primary">Đăng nhập</button>
+    </div>
+
+</form>
+{% endblock %}

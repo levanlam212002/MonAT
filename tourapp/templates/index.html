@@ -1,0 +1,132 @@
+{% extends 'layout/base.html' %}
+
+{% block title %}Trang chủ{% endblock %}
+
+{% block content %}
+<div class="carousel slide" data-ride="carousel" id="carouselExampleIndicators">
+    <ol class="carousel-indicators">
+        <li class="active" data-slide-to="0" data-target="#carouselExampleIndicators"></li>
+        <li data-slide-to="1" data-target="#carouselExampleIndicators"></li>
+        <li data-slide-to="2" data-target="#carouselExampleIndicators"></li>
+    </ol>
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img alt="First slide" class="d-block w-100"
+                 src="{{ url_for('static', filename='images/bannerindex.jpg') }}">
+        </div>
+    </div>
+
+    <div class="textgt">
+        <h1><b>GIỚI THIỆU VỀ CÔNG TY VIETNAM BOOKING – TOUR DU LỊCH</b></h1>
+        <p><span style="color: red; font-weight: bold">VIETNAM BOOKING</span> là thương hiệu của Công ty thương mại và
+            dịch vụ du lịch cả nước được đánh giá là một trong
+            những đơn vị có uy tín trong lĩnh vực kinh doanh lữ hành tại Hồ Chí Minh.
+            Bằng sự chuyên nghiệp của mình với phương châm: “Tất cả vì sự hài lòng của khách hàng” công ty rất vinh dự
+            khi luôn nhận được sự ủng hộ từ phía các đối tác.</p>
+    </div>
+    <hr>
+
+    <div class="textgt1">
+        <div>
+            <h4>THÔNG TIN</h4>
+            <p>Tên doanh nghiệp: <b>Công ty Cổ phần VIETNAM BOOKING</b></p>
+            <p>Tên Tiếng Anh: <b>VIETNAM BOOKING Corporation<b/></p>
+            <h4>LĨNH VỰC HOẠT ĐỘNG</h4>
+        </div>
+
+        <p><i class="fas fa-map-marker-alt"></i> Tour du lịch nghỉ dưỡng</p>
+        <p><i class="fas fa-map-marker-alt"></i> Tour du lịch theo yêu cầu cho khách Việt kiều về thăm quê</p>
+        <p><i class="fas fa-map-marker-alt"></i> Tour du lịch theo yêu cầu cho khách thích ngắm nhìn cảnh mộc mạc của
+            thiên nhiên</p>
+        <div class="mota1">Vùng núi phía Bắc không chỉ đẹp bởi những cung đường quanh co uốn lượn hùng vĩ, những dòng
+            sông lững lờ dưới triền núi quanh co mà còn có những cao nguyên đẹp miên man trong những mùa hoa như cao
+            nguyên Mộc Châu, Đồng Văn hay Bắc Hà.
+            Nếu ai đã từng lên các tỉnh miền núi phía Bắc chắc hẳn sẽ chẳng muốn về bởi thiên nhiên lẫn con người nơi
+            này có quá nhiều điều hấp dẫn.
+        </div>
+
+        <div class="text-center">
+            <img src="static/images/gt4.jpg"/>
+
+            <img src="static/images/gt5.jpg"/>
+
+            <img src="static/images/gt6.jpg"/>
+        </div>
+
+
+        <div>
+            <h4>MỤC TIÊU & SỨ MỆNH</h4>
+            <p>Lấy niềm tin của khách hàng là phương châm và thước đo chất lượng dịch vụ, Vietnam Booking luôn mong muốn
+                thương hiệu của mình được gắn với uy tín và chất lượng. Ngày nay, khi thị trường luôn liên tục thay đổi,
+                chúng tôi càng xác định rõ ràng mục tiêu và sứ mệnh của mình hơn:</p>
+            <p>Đối với khách hàng và đối tác:</p>
+
+
+            <div class="textgt11">
+                <ul class="list">
+                    <li>Xây dựng uy tín và thực hiện đúng mọi cam kết trước, trong và sau khi tiến hành giao dịch giữa
+                        các bên.
+                    </li>
+                </ul>
+
+                <ul class="list">
+                    <li>Chuyên cung cấp, tư vấn dịch vụ chất lượng nhất cho khách hàng với mức giá tốt nhất và phù hợp
+                        nhất.
+                    </li>
+                </ul>
+
+                <ul class="list">
+                    <li>Thực hiện nghiệp vụ tư vấn bán hàng một cách nhanh chóng, hiệu quả nhất</li>
+                </ul>
+            </div>
+
+
+        </div>
+
+
+        <div id="sanpham2">
+            <div class="imac_sp">
+                <div class="img_imac">
+                    <img id="poster" title="Mac-Center" src="static/images/gt7.jpg"/>
+                </div>
+                <div>
+
+                    <div class="text_imac">
+                        <h3>VIETNAM BOOKING</h3>
+                        <p>
+                            Công ty Cổ phần Việt Nam Booking chuyên cung cấp các tour du lịch đa dạng loại hình như du
+                            lịch nghỉ dưỡng, du lịch khám phá – trải nghiệm với lịch trình mới lạ hấp dẫn, dịch vụ đi
+                            kèm đạt chuẩn chất lượng và đặc biệt giá cả vô cùng tiết kiệm.
+                        </p>
+                        <p>
+                            Chúng tôi luôn sẵn sàng tư vấn, hướng dẫn quý khách có nhu cầu xin visa trọn gói. Vietnam
+                            Booking có bề dày kinh nghiệm và uy tín trong lĩnh vực visa du lịch, visa thăm thân nhân và
+                            visa công tác cho người Việt Nam nhập cảnh vào các nước phát triển của Châu Á, châu Âu, Úc,
+                            Mỹ…
+                        </p>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+        <hr>
+        <div class="image1">
+            <div>
+                <img src="static/images/gt1.jpg"/>
+            </div>
+            <div>
+                <img src="static/images/gt2.jpg"/>
+            </div>
+            <div>
+                <img src="static/images/gt3.jpg"/>
+            </div>
+            <div>
+                <img src="static/images/gt8.jpg"/>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

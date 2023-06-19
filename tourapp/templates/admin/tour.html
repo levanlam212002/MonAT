@@ -1,0 +1,74 @@
+{% extends 'admin/master.html' %}
+
+{% block body %}
+
+
+{% if current_user.is_authenticated %}
+<h1 class="text-center text-success">THỐNG KÊ TẦN SUẤT TOUR ĐƯỢC ĐẶT</h1>
+<div class="row">
+    <div class="col-md-5 col-sm-12">
+        <table class="table">
+            <tr>
+                <th>Tên tour</th>
+                <th>Giá tiền</th>
+                <th>Số lần đặt</th>
+            </tr>
+            {% for s in stats %}
+            <tr>
+                <td>{{ s[0] }}</td>
+                <td>{{ s[1] }}</td>
+                <td>{{ s[2] }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    <div class="col-md-7 col-sm-12">
+        <form>
+            <div class="form-group">
+                <label>Nhập tháng muốn thống kê</label>
+                <input type="text" name="month" class="form-control"/>
+            </div>
+            <div>
+                <input type="submit" value="Lọc dữ liệu" class="btn btn-info"/>
+            </div>
+        </form>
+        <canvas id="cateStats"></canvas>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="{{ url_for('static', filename='js/tk.js') }}"></script>
+<script>
+    let labels = []
+    let data = []
+    {% for s in stats %}
+    labels.push('{{ s[0] }}')
+    data.push({{ s[2] }})
+    {% endfor %}
+    window.onload = function() {
+        drawCateChart(labels, data)
+    }
+
+</script>
+{% else %}
+<h1 class="text-center text-danger">ĐĂNG NHẬP ADMIN</h1>
+
+<form method="post" action="{{ url_for('signin_admin') }}">
+
+    <div class="form-group">
+        <label for="name">Tên đăng nhập:</label>
+        <input type="text" class="form-control" id="username" name="username" required/>
+    </div>
+
+    <div class="form-group">
+        <label for="pass">Mật khẩu:</label>
+        <input type="password" class="form-control" id="pass" name="password" required/>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Đăng nhập</button>
+</form>
+
+
+{% endif %}
+
+
+{% endblock %}

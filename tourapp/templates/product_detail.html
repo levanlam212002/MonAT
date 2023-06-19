@@ -1,0 +1,220 @@
+{% extends 'layout/base.html' %}
+
+{% block title %}Chi tiết tour du lịch{% endblock %}
+
+{% block content %}
+<div class="carousel slide" data-ride="carousel" id="carouselExampleIndicators">
+    <ol class="carousel-indicators">
+        <li class="active" data-slide-to="0" data-target="#carouselExampleIndicators"></li>
+        <li data-slide-to="1" data-target="#carouselExampleIndicators"></li>
+        <li data-slide-to="2" data-target="#carouselExampleIndicators"></li>
+    </ol>
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img alt="First slide" class="d-block w-100" src="{{ url_for('static', filename='images/banner2.jpg') }}">
+        </div>
+        <div class="carousel-item">
+            <img alt="Second slide" class="d-block w-100" src="{{ url_for('static', filename='images/banner1.jpg') }}">
+        </div>
+        <div class="carousel-item">
+            <img alt="Third slide" class="d-block w-100" src="{{ url_for('static', filename='images/banner3.jpg') }}">
+        </div>
+
+    </div>
+    <a class="carousel-control-prev" data-slide="prev" href="#carouselExampleIndicators" role="button">
+        <span aria-hidden="true" class="carousel-control-prev-icon"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" data-slide="next" href="#carouselExampleIndicators" role="button">
+        <span aria-hidden="true" class="carousel-control-next-icon"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div>
+
+<div>
+    <div class="thongtintour">
+        <h1>THÔNG TIN TOUR</h1>
+    </div>
+    <section class="mainContentSection singlePackage">
+        <div class="container detail-tour-kiritm">
+            <div class="col-md-9 col-sm-12 col-xs-12">
+                <div class="row-info">
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <span class="text-uppercase">Thời gian: </span>
+                            <span class="font-weight-bold">{{ products.time }}</span>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <span class="text-uppercase">Phương tiện:</span>
+                            <span class="font-weight-bold">{{ products.vehicle}}</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <span class="text-uppercase">Điểm xuất phát: </span>
+                            <span class="font-weight-bold">{{ products.go_start }}</span>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <span class="text-uppercase">Điểm đến:</span>
+                            <span class="font-weight-bold">{{ products.go_end}}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="list-tour-detail">
+                    <div class="row">
+                        <div class="col-md-12 col-xs-12 tour-detail-title-information tour-detail-header-col">
+                            <div class="row">
+                                <div class="col-md-2.5 col-sm-3 col-xs-12">
+                                    Khởi hành
+                                </div>
+                                <div class="col-md-2 col-sm-3 col-xs-12">
+                                    Mã tour
+                                </div>
+                                <div class="col-sm-2 col-xs-12">
+                                    Giá thấp
+                                </div>
+                                <div class="col-sm-2 col-xs-12">
+                                    Giá cao
+                                </div>
+                                <div class="col-md-3 col-sm-12 col-xs-12">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-sm-12 col-xs-12 tour-detail-content-col">
+                            <div class="row">
+                                <div class="col-md-2.5 col-sm-3 col-xs-12">
+                                    <strong>{{ products.datetime_start}}</strong>
+                                </div>
+                                <div class="col-md-2 col-sm-3 col-xs-12" style="text-align: center">
+                                    <strong>{{ products.id }}</strong>
+                                </div>
+                                <div class="col-md-2 col-sm-2 col-xs-12 price">
+                                    <strong>{{ '{:.0f}'.format(products.price_small) }}</strong>
+                                </div>
+                                <div class="col-md-2 col-sm-2 col-xs-12 price">
+                                    <strong>{{ '{:,.0f}'.format(products.price_big) }}</strong>
+                                </div>
+                                <div class="col-md-3 col-sm-12 col-xs-12">
+                                    <div class="action-book">
+                                        <a class="btn btn-book-tour book-tour"
+                                           href="{{ url_for('pay_product', product_id=products.id) }}">Đặt chỗ</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row-description">
+                    <div class="title-description">
+                        Tour này có gì
+                    </div>
+                    <div class="content-description">
+                        - Khởi hành: thứ 5 hàng tuần
+                        - Tham quan thác Dambri - ngọn thác hùng vĩ tại cao nguyên Bảo Lộc.
+                        - Tham quan Đồi Mây Đà Lạt - khu du lịch nằm bao trọn trên ngọn đồi Túy Sơn.
+                        - Thăm nhà thờ Domain de Marie
+                    </div>
+                </div>
+                <div class="row row-image-box isdesktop">
+                    <div class="col-md-4 col-sm-6 col-xs-12 zoom " style="margin-bottom: 25px">
+                        <img width="100%" height="100%"
+                             src="{{ url_for('static', filename='images/DaLat-QuangTruong_1114803884.jpg') }}"
+                             alt="image tor">
+                    </div>
+                    <div class="col-md-4 col-sm-6 col-xs-12 zoom " style="margin-bottom: 25px">
+                        <img width="100%" height="100%"
+                             src="{{ url_for('static', filename='images/dambri-waterfall-da-lat.jpg') }}"
+                             alt="image-tour">
+                    </div>
+                    <div class="col-md-4 col-sm-6 col-xs-12 zoom " style="margin-bottom: 25px">
+                        <img width="100%" height="100%"
+                             src="{{ url_for('static', filename='images/Domaine-de-Marie-church-Da-Lat.jpg') }}"
+                             alt="image-tour">
+                    </div>
+                    <div class="col-md-4 col-sm-6 col-xs-12 zoom " style="margin-bottom: 25px">
+                        <img width="100%" height="100%"
+                             src="{{ url_for('static', filename='images/Truc-Lam-longstanding-ancient-works-in-Dalat-Vietnam_430980127.jpg') }}"
+                             alt="image-tour">
+                    </div>
+                    <div class="col-md-4 col-sm-6 col-xs-12 zoom " style="margin-bottom: 25px">
+                        <img width="100%" height="100%"
+                             src="{{ url_for('static', filename='images/DaLat-BanhTrangNuong_1039491643.jpg') }}"
+                             alt="image-tour">
+                    </div>
+                    <div class="col-md-4 col-sm-6 col-xs-12 zoom " style="margin-bottom: 25px">
+                        <img width="100%" height="100%"
+                             src="{{ url_for('static', filename='images/DaLat-ChoDem_444997579.jpg') }}"
+                             alt="image-tour">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-12 col-xs-12">
+                <div class="row">
+                    <div class="col-md-12 col-sm-4 col-xs-12">
+                        <div class="right-detail-tour-box">
+                            <div class="title">Hỗ trợ khách hàng</div>
+                            <ul class="list-rows">
+                                <li class="item">
+                                    <a class="item-line" href="tel:1900 1808">
+                                        <i class="fa fa-phone"></i>
+                                        <span class="text"> Hotline: 1900 1808</span>
+                                    </a>
+                                </li>
+                                <li class="item">
+                                    <a class="item-line" href="mailto:info@saigontourist.net">
+                                        <i class="fa fa-envelope"></i>
+                                        <span class="text">Email: dhmOU@gmail.com</span>
+                                    </a>
+                                </li>
+                            </ul>
+                            <div class="callback-sgt">
+                                <button class="btn-callback-sgt" data-toggle="modal" data-target="#callMeBackModal">
+                                <span class="fa fa-phone">
+                                    Bạn muốn gọi lại?
+                                </span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-sm-4 col-xs-12">
+                        <div class="right-detail-tour-box">
+                            <div class="title">Ưu đãi tour online</div>
+                            <ul class="list-rows">
+                                <li class="item">
+                                    <a href="#" class="item-line">
+                                        <span class="text">An toàn-Bảo mật</span>
+                                    </a>
+                                </li>
+                                <li class="item">
+                                    <a href="#" class="item-line">
+                                        <span class="text">Tiện lợi, tiết kiệm thời gian</span>
+                                    </a>
+                                </li>
+                                <li class="item">
+                                    <a href="#" class="item-line">
+                                        <span class="text">Không tính phí giao dịch</span>
+                                    </a>
+                                </li>
+                                <li class="item">
+                                    <a href="#" class="item-line">
+                                        <span class="text">Giao dịch bảo đảm</span>
+                                    </a>
+                                </li>
+                                <li class="item">
+                                    <a href="#" class="item-line">
+                                        <span class="text">Nhận thêm ưu đãi</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+</div>
+
+
+{% endblock %}

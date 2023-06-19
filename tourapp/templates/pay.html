@@ -1,0 +1,157 @@
+{% extends 'layout/base.html' %}
+
+{% block title %}Thanh toán{% endblock %}
+
+{% block content %}
+<div class="booking-tour">
+    <div id="demo" class="carousel slide" data-ride="carousel">
+        <!-- The slideshow -->
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="{{ url_for('static', filename='images/bannerpay.jpg') }}" width="100%"
+                     height="380px"
+                     alt="{{ products.name }}"/>
+            </div>
+        </div>
+    </div>
+    <section class="checkout-head d-none d-lg-block">
+        <div class="container">
+            <div class="row">
+                <ul class="head col-12">
+                    <li class="checked">1.Nhập thông tin</li>
+                    <li class="checked">
+                        <i class="fas fa-angle-right"></i>
+                    </li>
+                    <li class="checked">2.Thanh toán</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="checkout-head-mobile">
+        <form method="post" action="{{ url_for('payment', product_id=products.id) }}">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 col-12 left">
+                        <h2 class="d-none d-lg-block">
+                            Tổng quan về chuyến đi
+                        </h2>
+                        <div class="description hardCode">
+                            <h3> Thông tin Khách hàng</h3>
+                            <div class="customer-contact mb-3">
+                                <div class="customer-contact-inner" action="#">
+                                    <div class="col-sm-6 col-xs-12">
+                                        <div class="form-group">
+                                            <label for="name">Họ Tên</label>
+                                            <input type="text" class="form-control" placeholder="Nhập họ tên..."
+                                                   id="name"
+                                                   name="name">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="email">Email</label>
+                                            <input type="email" class="form-control" placeholder="Nhập email..."
+                                                   id="email"
+                                                   name="email">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="amount_big">Số lượng người lớn</label>
+                                            <input type="number" class="form-control"
+                                                   placeholder="Nhập số lượng người đi...." id="amount_big"
+                                                   name="amount_big">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="amount_young">Số lượng trẻ em</label>
+                                            <input type="number" class="form-control"
+                                                   placeholder="Nhập số lượng người đi...." id="amount_young"
+                                                   name="amount_young">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 col-xs-12">
+                                        <div class="form-group">
+                                            <label for="phone">Số điện thoại</label>
+                                            <input type="number" class="form-control"
+                                                   placeholder="Nhập số điện thoại..."
+                                                   id="phone" name="phone">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="address">Địa chỉ</label>
+                                            <input type="text" class="form-control" placeholder="Nhập địa chỉ..."
+                                                   id="address" name="address">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="cccd">CCCD</label>
+                                            <input type="number" class="form-control"
+                                                   placeholder="Nhập căn cước công dân..."
+                                                   id="cccd" name="cccd">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="pay_date">Ngày thanh toán</label>
+                                            <input type="date" class="form-control"
+                                                   placeholder="Nhập ngày thanh toán..."
+                                                   id="pay_date" name="pay_date">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-md-4 col-12 right">
+                        <div class="card">
+                            <a href="#">
+                                <img class="card-img-top" src="{{ url_for('static', filename=products.image) }}"
+                                     alt="{{ products.name }}">
+                            </a>
+                            <div class="card-body">
+                                <h4 class="card-title">{{ products.name }}</h4>
+                                <div class="row">
+                                    <div class="col-sm-6 col-xs-12">
+                                        <div class="dt-start">
+                                            <span>Ngày bắt đầu </span>
+                                        </div>
+                                        <div class="dt-end">
+                                            <span>Ngày kết thúc</span>
+                                        </div>
+                                        <div class="customer-pay">
+                                            <span>Giá người lớn </span>
+                                        </div>
+                                        <div class="customer-pay">
+                                            <span>Giá trẻ em </span>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 col-xs-12">
+                                        <div class="dt-start-info">
+                                            <p class="card-text">{{ products.datetime_start }}</p>
+                                        </div>
+                                        <div class="dt-end-info">
+                                            <p class="card-text">{{ products.datetime_end }}</p>
+                                        </div>
+                                        <div class="dt-end-info">
+                                            <input type="number" id="price_big" name="price_big" class="card-text"
+                                                   value="{{ products.price_big }}"/>
+                                        </div>
+                                        <div class="dt-end-info">
+                                            <input type="number" id="price_young" name="price_young" class="card-text"
+                                                   value="{{ products.price_small }}"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="index-btn-sign">
+                                    {% if current_user.is_authenticated %}
+                                    <button type="submit" class="btn btn-primary">Đặt ngay</button>
+                                    {% else %}
+                                    <p style="font-size: 14px;">Vui lòng <a style="color: red;"
+                                                                            href="/user-login?next=/pay_product">đăng
+                                        nhập</a> để thanh toán!</p>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </section>
+
+</div>
+{% endblock %}

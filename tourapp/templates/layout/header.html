@@ -1,0 +1,135 @@
+<!--<div class="header">-->
+<!--    <div class="container-fluid top-header navbar-fixed-top">-->
+<!--        <div class="container">-->
+<!--            <div class="row">-->
+<!--                <div class="col-md-6 no-padding">-->
+<!--                    <ul>-->
+<!--                        <li>-->
+<!--                            <a href="mailto:info@saigontourist.net">-->
+<!--                                <i class="fa fa-envelope"></i>-->
+<!--                                info@saigontourist.net-->
+<!--                            </a>-->
+<!--                        </li>-->
+<!--                        <li></li>-->
+<!--                        <li>-->
+<!--                            <a href="tel:1900 1808">-->
+<!--                                <i class="fa fa-phone"></i>-->
+<!--                                Hotline: 1900 1808-->
+<!--                            </a>-->
+<!--                        </li>-->
+<!--                    </ul>-->
+<!--                </div>-->
+<!--                <div class="col-md-6 ">-->
+<!--                    <ul class="login-content">-->
+<!--                        <li>-->
+<!--                            <a href="/" class="login-href">-->
+<!--                                <i class="fas fa-map-marker-alt"></i>-->
+<!--                                Chọn điểm khởi hành-->
+<!--                            </a>-->
+<!--                        </li>-->
+<!--                        <li>-->
+<!--                            <a href="/" class="login-href">-->
+<!--                                <i class="fas fa-arrow-right"></i>-->
+<!--                                Đăng nhập-->
+<!--                            </a>-->
+<!--                        </li>-->
+<!--                        <li>-->
+<!--                            <a href="/" class="login-href">-->
+<!--                                <i class="flag-english"></i>-->
+<!--                                Vietnamese-->
+<!--                            </a>-->
+<!--                        </li>-->
+<!--                    </ul>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    <div class="container">-->
+<!--        <nav class="navbar navbar-expand-md ">-->
+<!--            &lt;!&ndash; Toggler/collapsibe Button &ndash;&gt;-->
+<!--            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">-->
+<!--                <span class="navbar-toggler-icon"></span>-->
+<!--            </button>-->
+
+<!--            &lt;!&ndash; Navbar links &ndash;&gt;-->
+<!--            <div class="collapse navbar-collapse" id="collapsibleNavbar">-->
+<!--                <ul class="navbar-nav">-->
+<!--                    <li class="nav-item">-->
+<!--                        <a class="nav-link" href="/">TRANG CHỦ</a>-->
+<!--                    </li>-->
+<!--                    <li class="nav-item ">-->
+<!--                        <a class="nav-link" href="{{ url_for('product_list') }}">TOUR DU LỊCH</a>-->
+<!--                    </li>-->
+<!--                    <li class="nav-item ">-->
+<!--                        <a class="nav-link" href=#>DỊCH VỤ</a>-->
+<!--                    </li>-->
+<!--                    <li class="nav-item ">-->
+<!--                        <a class="nav-link" href=#>LIÊN HỆ</a>-->
+<!--                    </li>-->
+
+<!--                </ul>-->
+<!--            </div>-->
+<!--        </nav>-->
+<!--    </div>-->
+<!--</div>-->
+<nav class="menuchinh">
+    <div>
+        <div class="logo1">
+            <a href="/" id="logo"><img src="{{ url_for('static', filename='images/logo.png') }}"></a>
+        </div>
+    </div>
+    <div>
+        <div class="menu">
+            <ul class="menucha">
+
+                <li class="sub">
+                    <a href="/">TRANG CHỦ</a>
+                </li>
+
+                <li class="sub">
+                    <a href="{{ url_for('product_list') }}">TOUR DU LỊCH</a>
+                    <ul class="menu1 sub1">
+                        {% for c in categories %}
+                        <li><a href="{{ url_for('product_list', category_id=c.id) }}">{{ c.name }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </li>
+
+                {% if current_user.is_authenticated %}
+                <div class="userlogin">
+
+                    <li class="sub">
+                        <a href="#"><i class="fas fa-solid fa-user"></i> {{ current_user.username }}</a>
+                    </li>
+                    <li class="sub">
+                        <a href="{{ url_for('pay_history', user_id=current_user.id) }}">Lịch sử thanh toán</a>
+                    </li>
+
+                    <li class="sub">
+                        <a href="{{ url_for('user_signout') }}">Đăng xuất</a>
+                    </li>
+                </div>
+                {% else %}
+
+                <li class="sub">
+                    <a href="{{ url_for('user_signin') }}">ĐĂNG NHẬP</a>
+                </li>
+                <li class="sub">
+                    <a href="{{ url_for('user_register') }}">ĐĂNG KÝ</a>
+                </li>
+                {% endif %}
+
+
+            </ul>
+        </div>
+    </div>
+
+    <div class="iconmenu">
+        <li><a href="{{ url_for('product_list') }}"><i class="fas fa-search"></i></a></li>
+        <li><a href=""><i class="fas fa-solid fa-phone"></i></a></li>
+
+    </div>
+
+</nav>
+
+
